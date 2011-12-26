@@ -18,7 +18,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -54,7 +54,7 @@ public class GitChangeSet extends ChangeLogSet.Entry {
     private String title;
     private String id;
     private String parentCommit;
-    private Collection<Path> paths = new HashSet<Path>();
+    private Collection<Path> paths = new LinkedHashSet<Path>();
     private boolean authorOrCommitter;
     
     /**
@@ -198,7 +198,7 @@ public class GitChangeSet extends ChangeLogSet.Entry {
 
     @Override
     public Collection<String> getAffectedPaths() {
-        Collection<String> affectedPaths = new HashSet<String>(this.paths.size());
+        Collection<String> affectedPaths = new LinkedHashSet<String>(this.paths.size());
         for (Path file : this.paths) {
             affectedPaths.add(file.getPath());
         }
